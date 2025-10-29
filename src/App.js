@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import { Box, TextField, List, ListItem, ListItemText, Paper, CircularProgress } from '@mui/material';
+import { Container, Box, TextField, List, ListItem, ListItemText, Paper, CircularProgress } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChampagneGlasses } from '@fortawesome/free-solid-svg-icons';
 import Floor from './Floor';
@@ -92,24 +92,24 @@ function Home() {
   const handleNameSelect = (name) => {
     setSearchName(name);
     setFilteredNames([]);
+    // 座席情報を表示する処理をここに追加
+    // 名前から座席情報を抽出
+    const seatInfo = name.includes(' - ') ? name.split(' - ')[1] : 'Seat information not available';
+    alert(`Welcome ${name.split(' - ')[0]}! Your seat: ${seatInfo}`);
   };
 
   return (
-    <Box
-      sx={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        px: { xs: 2, sm: 3 },
-        overflow: 'hidden'
-      }}
-    >
+    <Container maxWidth="sm">
+      <Box
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="100vh"
+        sx={{
+          px: { xs: 2, sm: 3 },
+        }}
+      >
         <h1 className="common_style">
           <FontAwesomeIcon icon={faChampagneGlasses} style={{ marginRight: '10px' }} />
           Find Your Seat
@@ -195,6 +195,7 @@ function Home() {
           )}
         </Box>
       </Box>
+    </Container>
   );
 }
 
