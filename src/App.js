@@ -92,10 +92,6 @@ function Home() {
   const handleNameSelect = (name) => {
     setSearchName(name);
     setFilteredNames([]);
-    // 座席情報を表示する処理をここに追加
-    // 名前から座席情報を抽出
-    const seatInfo = name.includes(' - ') ? name.split(' - ')[1] : 'Seat information not available';
-    alert(`Welcome ${name.split(' - ')[0]}! Your seat: ${seatInfo}`);
   };
 
   return (
@@ -198,7 +194,7 @@ function Home() {
             </>
           )}
         </Box>
-    </Box>
+      </Box>
   );
 }
 
