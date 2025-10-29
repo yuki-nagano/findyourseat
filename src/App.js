@@ -81,7 +81,7 @@ function Home() {
     
     if (value.length > 0) {
       const filtered = allNames.filter(name => 
-        name.toLowerCase().includes(value.toLowerCase())
+        name.toLowerCase().startsWith(value.toLowerCase())
       );
       setFilteredNames(filtered.slice(0, 5)); // 最大5件表示
     } else {
