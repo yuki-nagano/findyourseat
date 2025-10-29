@@ -1,0 +1,12 @@
+:root {
+  --primary-green: #4caf50;
+}
+
+.common_style {
+  margin: 0;
+  font-weight: 400;
+  font-family: Poppins;
+  line-height: 1.167;
+  text-align: center;
+  word-wrap: break-word;
+}
