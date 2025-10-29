@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Container, Box, TextField, List, ListItem, ListItemText, Paper, CircularProgress } from '@mui/material';
 import Floor from './Floor';
 import Menu from './Menu';
