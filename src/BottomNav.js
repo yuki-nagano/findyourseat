@@ -23,6 +23,7 @@ function BottomNav() {
       case 1: navigate('/floor'); break;
       case 2: navigate('/menu'); break;
       case 3: navigate('/photos'); break;
+      default: navigate('/'); break;
     }
   };
 
