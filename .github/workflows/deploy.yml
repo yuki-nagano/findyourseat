@@ -39,6 +39,9 @@ jobs:
         REACT_APP_GOOGLE_SHEETS_API_KEY: ${{ secrets.GOOGLE_SHEETS_API_KEY }}
         REACT_APP_GOOGLE_SHEETS_ID: ${{ secrets.GOOGLE_SHEETS_ID }}
         
+    - name: Copy .nojekyll to build directory
+      run: cp public/.nojekyll build/.nojekyll
+        
     - name: Setup Pages
       uses: actions/configure-pages@v4
       
