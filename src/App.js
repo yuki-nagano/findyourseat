@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Container, Box, TextField, List, ListItem, ListItemText, Paper, CircularProgress } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChampagneGlasses } from '@fortawesome/free-solid-svg-icons';
 import Floor from './Floor';
 import Menu from './Menu';
 import Photos from './Photos';
@@ -109,6 +111,7 @@ function Home() {
         }}
       >
         <h1 className="common_style">
+          <FontAwesomeIcon icon={faChampagneGlasses} style={{ marginRight: '10px' }} />
           Find Your Seat
         </h1>
         <Box sx={{ position: 'relative', width: '100%', maxWidth: { xs: '100%', sm: 400 } }}>
