@@ -20,7 +20,7 @@ function Home() {
   }, []);
 
   const fetchNamesFromGoogleSheets = async () => {
-    // テスト用データ（スプレッドシートの形式問題のため）
+    // For test
     // setTimeout(() => {
     //   const testNames = [
     //     'John Smith - Table 1',
@@ -35,16 +35,14 @@ function Home() {
     //   setAllNames(testNames);
     //   setLoading(false);
     // }, 1000);
-    
-    // Google Sheets API（スプレッドシートをGoogle Sheets形式に変換後に有効化）
+
 
     try {
+      // Using Google Sheets API
       const apiKey = process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
       const sheetId = process.env.REACT_APP_GOOGLE_SHEETS_ID;
       
-
-      
-      // Bカラム（名前）とGカラム（テーブル番号）を同時に取得
+      // Get B:(name)とG:(table#)
       const range = 'PAX!B2:G40';
       
       const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
@@ -58,10 +56,10 @@ function Home() {
       
       if (data.values) {
         const combinedNames = data.values
-          .filter(row => row[0] && row[0].trim()) // Bカラム（インデックス0）に名前がある行のみ
+          .filter(row => row[0] && row[0].trim()) 
           .map(row => {
-            const name = row[0].trim(); // Bカラム
-            const tableNumber = row[5] ? row[5].trim() : ''; // Gカラム（インデックス5）
+            const name = row[0].trim(); // B
+            const tableNumber = row[5] ? row[5].trim() : ''; // G
             return tableNumber ? `${name} - Table ${tableNumber}` : name;
           });
         
@@ -92,8 +90,6 @@ function Home() {
   const handleNameSelect = (name) => {
     setSearchName(name);
     setFilteredNames([]);
-    // 座席情報を表示する処理をここに追加
-    // 名前から座席情報を抽出
     const seatInfo = name.includes(' - ') ? name.split(' - ')[1] : 'Seat information not available';
     alert(`Welcome ${name.split(' - ')[0]}! Your seat: ${seatInfo}`);
   };
