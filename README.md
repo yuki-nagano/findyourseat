@@ -4,10 +4,11 @@
 
 Wedding hub seating chart, floor plan, food menu and photo using React.js
 
-**Live**: [https://yuki-nagano.github.io/findyourseat/](https://yuki-nagano.github.io/findyourseat/)
+**Live**: [https://yuki-nagano.github.io/findyourseat/demo](https://yuki-nagano.github.io/findyourseat/demo)
 
 ## Features
 
+- **Access Code Protection**: Secure access control using secret variables (access code required for non-demo access such as [home path](https://yuki-nagano.github.io/findyourseat/))
 - **Name Search**: Find your seat by searching your name
   > *Note: Guest names are stored externally via Google Sheets API, not hardcoded in source code for privacy protection*
 - **Floor Plan**: View venue layout (Coming Soon)
@@ -40,6 +41,9 @@ Wedding hub seating chart, floor plan, food menu and photo using React.js
    # Create .env.local file
    REACT_APP_GOOGLE_SHEETS_API_KEY=your_api_key_here
    REACT_APP_GOOGLE_SHEETS_ID=your_sheet_id_here
+   REACT_APP_ACCESS_CODE=your_access_code_here
+   REACT_APP_GOOGLE_PHOTOS_URL=your_google_photos_url_here
+   REACT_APP_GOOGLE_PHOTOS_URL_DEMO=your_demo_photos_url_here
    ```
 
 4. **Start development server**
