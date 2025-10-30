@@ -20,6 +20,8 @@ function Home() {
 
   const fetchNamesFromGoogleSheets = useCallback(async () => {
     // Check if demo mode
+    console.log('Current pathname:', location.pathname);
+    console.log('Includes demo:', location.pathname.includes('demo'));
     if (location.pathname.includes('demo')) {
       setTimeout(() => {
         const testNames = [
@@ -82,6 +84,8 @@ function Home() {
   }, [location.pathname, fetchNamesFromGoogleSheets]);
   
   // Skip authentication for demo mode
+  console.log('Auth check - pathname:', location.pathname);
+  console.log('Auth check - includes demo:', location.pathname.includes('demo'));
   if (!location.pathname.includes('demo')) {
     // Check access code
     const urlParams = new URLSearchParams(location.search);
