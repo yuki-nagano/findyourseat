@@ -38,6 +38,9 @@ jobs:
       env:
         REACT_APP_GOOGLE_SHEETS_API_KEY: ${{ secrets.GOOGLE_SHEETS_API_KEY }}
         REACT_APP_GOOGLE_SHEETS_ID: ${{ secrets.GOOGLE_SHEETS_ID }}
+        REACT_APP_ACCESS_CODE: ${{ secrets.ACCESS_CODE }}
+        REACT_APP_GOOGLE_PHOTOS_URL: ${{ secrets.GOOGLE_PHOTOS_URL }}
+        REACT_APP_GOOGLE_PHOTOS_URL_DEMO: ${{ secrets.GOOGLE_PHOTOS_URL_DEMO }}
         
     - name: Copy .nojekyll to build directory
       run: cp public/.nojekyll build/.nojekyll

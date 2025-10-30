@@ -1,10 +1,19 @@
 import React from 'react';
 import { Container, Box, Button } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 import './common.css';
 
 function Photos() {
+  const location = useLocation();
+  const isDemo = location.pathname.startsWith('/demo');
+  
   const handleUpload = () => {
-    window.open('https://photos.app.goo.gl/XTfz5K7CtLq1mBut7', '_blank');
+    const photoUrl = isDemo 
+      ? process.env.REACT_APP_GOOGLE_PHOTOS_URL_DEMO 
+      : process.env.REACT_APP_GOOGLE_PHOTOS_URL;
+    if (photoUrl) {
+      window.open(photoUrl, '_blank');
+    }
   };
 
   return (
