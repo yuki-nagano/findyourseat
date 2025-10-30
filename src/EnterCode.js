@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChampagneGlasses } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import './common.css';
 
 function EnterCode() {
   const [code, setCode] = useState('');
-  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -74,14 +71,7 @@ function EnterCode() {
           }}
         />
         
-        {error && (
-          <Typography 
-            color="error" 
-            sx={{ fontFamily: 'Poppins', mb: 2 }}
-          >
-            {error}
-          </Typography>
-        )}
+
         
         <Button
           type="submit"

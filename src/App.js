@@ -16,7 +16,7 @@ function Home() {
   const [allNames, setAllNames] = useState([]);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
-  const navigate = useNavigate();
+
 
   const fetchNamesFromGoogleSheets = async () => {
     // Check if demo mode
@@ -79,7 +79,7 @@ function Home() {
 
   useEffect(() => {
     fetchNamesFromGoogleSheets();
-  }, [location.pathname]);
+  }, [location.pathname, fetchNamesFromGoogleSheets]);
   
   // Skip authentication for demo mode
   if (location.pathname !== '/demo') {
