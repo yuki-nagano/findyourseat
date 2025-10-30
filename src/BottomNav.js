@@ -48,8 +48,8 @@ function BottomNav() {
         }}
       >
         <BottomNavigationAction label="Find Your Seat" />
-        <BottomNavigationAction label="Floor" />
-        <BottomNavigationAction label="Menu" />
+        <BottomNavigationAction label="Floor Plan" />
+        <BottomNavigationAction label="Food/Beverage Menu" />
         <BottomNavigationAction label="Photos" />
       </BottomNavigation>
     </Box>
