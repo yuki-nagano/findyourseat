@@ -238,8 +238,10 @@ function ProtectedRoute({ children }) {
 }
 
 function App() {
+  const basename = process.env.NODE_ENV === 'production' ? '/findyourseat' : '';
+  
   return (
-    <Router>
+    <Router basename={basename}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/demo" element={<Home />} />
