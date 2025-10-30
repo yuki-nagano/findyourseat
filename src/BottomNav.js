@@ -7,7 +7,7 @@ function BottomNav() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isDemo = location.pathname.startsWith('/demo');
+  const isDemo = location.pathname.includes('demo');
   
   const getValueFromPath = (path) => {
     if (path === '/' || path === '/demo') return 0;

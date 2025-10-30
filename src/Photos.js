@@ -5,7 +5,7 @@ import './common.css';
 
 function Photos() {
   const location = useLocation();
-  const isDemo = location.pathname.startsWith('/demo');
+  const isDemo = location.pathname.includes('demo');
   
   const handleUpload = () => {
     const photoUrl = isDemo 
