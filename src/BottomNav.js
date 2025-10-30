@@ -7,23 +7,28 @@ function BottomNav() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const isDemo = location.pathname.startsWith('/demo');
+  
   const getValueFromPath = (path) => {
-    switch (path) {
-      case '/': return 0;
-      case '/floor': return 1;
-      case '/menu': return 2;
-      case '/photos': return 3;
-      default: return 0;
-    }
+    if (path === '/' || path === '/demo') return 0;
+    if (path === '/floor' || path === '/demo/floor') return 1;
+    if (path === '/menu' || path === '/demo/menu') return 2;
+    if (path === '/photos' || path === '/demo/photos') return 3;
+    return 0;
   };
 
   const handleChange = (event, newValue) => {
+    const prefix = isDemo ? '/demo' : '';
+    const urlParams = new URLSearchParams(location.search);
+    const codeParam = urlParams.get('code');
+    const queryString = codeParam && !isDemo ? `?code=${codeParam}` : '';
+    
     switch (newValue) {
-      case 0: navigate('/'); break;
-      case 1: navigate('/floor'); break;
-      case 2: navigate('/menu'); break;
-      case 3: navigate('/photos'); break;
-      default: navigate('/'); break;
+      case 0: navigate(isDemo ? '/demo' : `/${queryString}`); break;
+      case 1: navigate(`${prefix}/floor${queryString}`); break;
+      case 2: navigate(`${prefix}/menu${queryString}`); break;
+      case 3: navigate(`${prefix}/photos${queryString}`); break;
+      default: navigate(isDemo ? '/demo' : `/${queryString}`); break;
     }
   };
 

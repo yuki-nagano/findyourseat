@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { Container, Box, TextField, List, ListItem, ListItemText, Paper, CircularProgress } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChampagneGlasses } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +7,7 @@ import Floor from './Floor';
 import Menu from './Menu';
 import Photos from './Photos';
 import BottomNav from './BottomNav';
+import EnterCode from './EnterCode';
 import './common.css';
 
 function Home() {
@@ -14,28 +15,32 @@ function Home() {
   const [filteredNames, setFilteredNames] = useState([]);
   const [allNames, setAllNames] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchNamesFromGoogleSheets();
-  }, []);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const fetchNamesFromGoogleSheets = async () => {
-    // For test
-    // setTimeout(() => {
-    //   const testNames = [
-    //     'John Smith - Table 1',
-    //     'Jane Doe - Table 2',
-    //     'Mike Johnson - Table 3',
-    //     'Sarah Wilson - Table 4',
-    //     'David Brown - Table 6',
-    //     'Emily Davis - Table 7',
-    //     'Chris Miller - Table 8',
-    //     'Lisa Garcia - Table 9'
-    //   ];
-    //   setAllNames(testNames);
-    //   setLoading(false);
-    // }, 1000);
-
+    // Check if demo mode
+    if (location.pathname === '/demo') {
+      setTimeout(() => {
+        const testNames = [
+          'John Smith - Table 1',
+          'Alice Smith - Table 1',
+          'Jane Doe - Table 2',
+          'Bob Johnson - Table 2',
+          'Franklin Johnson - Table 2',
+          'Mike Johnson - Table 3',
+          'George Mike - Table 3',
+          'Sarah Wilson - Table 4',
+          'David Brown - Table 6',
+          'Emily Davis - Table 7',
+          'Chris Miller - Table 8',
+          'Lisa Garcia - Table 9'
+        ];
+        setAllNames(testNames);
+        setLoading(false);
+      }, 1000);
+      return;
+    }
 
     try {
       // Using Google Sheets API
@@ -70,8 +75,31 @@ function Home() {
     } finally {
       setLoading(false);
     }
-    
   };
+
+  useEffect(() => {
+    fetchNamesFromGoogleSheets();
+  }, [location.pathname]);
+  
+  // Skip authentication for demo mode
+  if (location.pathname !== '/demo') {
+    // Check access code
+    const urlParams = new URLSearchParams(location.search);
+    const enteredCode = urlParams.get('code');
+    const validCode = process.env.REACT_APP_ACCESS_CODE;
+    
+    console.log('Location search:', location.search);
+    console.log('Entered code:', enteredCode);
+    console.log('Valid code:', validCode);
+    console.log('Match:', enteredCode === validCode);
+    
+    if (!enteredCode || enteredCode !== validCode) {
+      console.log('Redirecting to enter-code');
+      return <Navigate to="/enter-code" replace />;
+    }
+    
+    console.log('Authentication passed, showing home page');
+  }
 
   const handleNameChange = (event) => {
     const value = event.target.value;
@@ -81,7 +109,7 @@ function Home() {
       const filtered = allNames.filter(name => 
         name.toLowerCase().startsWith(value.toLowerCase())
       );
-      setFilteredNames(filtered.slice(0, 5)); // 最大5件表示
+      setFilteredNames(filtered.slice(0, 5)); // up to 5
     } else {
       setFilteredNames([]);
     }
@@ -195,14 +223,33 @@ function Home() {
   );
 }
 
+// Protected Route Component
+function ProtectedRoute({ children }) {
+  const location = useLocation();
+  const urlParams = new URLSearchParams(location.search);
+  const enteredCode = urlParams.get('code');
+  const validCode = process.env.REACT_APP_ACCESS_CODE || 'wedding2024';
+  
+  if (!enteredCode || enteredCode !== validCode) {
+    return <Navigate to="/enter-code" replace />;
+  }
+  
+  return children;
+}
+
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/floor" element={<Floor />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/photos" element={<Photos />} />
+        <Route path="/demo" element={<Home />} />
+        <Route path="/demo/floor" element={<Floor />} />
+        <Route path="/demo/menu" element={<Menu />} />
+        <Route path="/demo/photos" element={<Photos />} />
+        <Route path="/enter-code" element={<EnterCode />} />
+        <Route path="/floor" element={<ProtectedRoute><Floor /></ProtectedRoute>} />
+        <Route path="/menu" element={<ProtectedRoute><Menu /></ProtectedRoute>} />
+        <Route path="/photos" element={<ProtectedRoute><Photos /></ProtectedRoute>} />
       </Routes>
       <BottomNav />
     </Router>
