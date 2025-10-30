@@ -20,7 +20,7 @@ function Home() {
 
   const fetchNamesFromGoogleSheets = useCallback(async () => {
     // Check if demo mode
-    if (location.pathname === '/demo') {
+    if (location.pathname.endsWith('/demo')) {
       setTimeout(() => {
         const testNames = [
           'John Smith - Table 1',
@@ -82,7 +82,7 @@ function Home() {
   }, [location.pathname, fetchNamesFromGoogleSheets]);
   
   // Skip authentication for demo mode
-  if (location.pathname !== '/demo') {
+  if (!location.pathname.endsWith('/demo')) {
     // Check access code
     const urlParams = new URLSearchParams(location.search);
     const enteredCode = urlParams.get('code');
