@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Container, Box, TextField, List, ListItem, ListItemText, Paper, CircularProgress } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChampagneGlasses } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +18,7 @@ function Home() {
   const location = useLocation();
 
 
-  const fetchNamesFromGoogleSheets = async () => {
+  const fetchNamesFromGoogleSheets = useCallback(async () => {
     // Check if demo mode
     if (location.pathname === '/demo') {
       setTimeout(() => {
@@ -75,7 +75,7 @@ function Home() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [location.pathname]);
 
   useEffect(() => {
     fetchNamesFromGoogleSheets();
