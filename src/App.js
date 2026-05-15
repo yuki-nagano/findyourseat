@@ -10,6 +10,32 @@ import BottomNav from './BottomNav';
 import EnterCode from './EnterCode';
 import './common.css';
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error, info) {
+    console.error('ErrorBoundary caught:', error, info);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <Box sx={{ p: 4, textAlign: 'center' }}>
+          <h2>Something went wrong</h2>
+          <pre style={{ color: 'red', textAlign: 'left', whiteSpace: 'pre-wrap' }}>
+            {this.state.error?.toString()}
+          </pre>
+        </Box>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 function Home() {
   const [searchName, setSearchName] = useState('');
   const [filteredNames, setFilteredNames] = useState([]);
@@ -89,8 +115,8 @@ function Home() {
   if (!location.pathname.includes('demo')) {
     // Check access code
     const urlParams = new URLSearchParams(location.search);
-    const enteredCode = urlParams.get('code');
-    const validCode = process.env.REACT_APP_ACCESS_CODE;
+    const enteredCode = urlParams.get('code')?.toLowerCase();
+    const validCode = (process.env.REACT_APP_ACCESS_CODE || 'wedding2024').toLowerCase();
     
     console.log('Location search:', location.search);
     console.log('Entered code:', enteredCode);
@@ -111,7 +137,7 @@ function Home() {
     
     if (value.length > 0) {
       const filtered = allNames.filter(name => 
-        name.toLowerCase().startsWith(value.toLowerCase())
+        name.toLowerCase().includes(value.toLowerCase())
       );
       setFilteredNames(filtered.slice(0, 5)); // up to 5
     } else {
@@ -123,7 +149,7 @@ function Home() {
     setSearchName(name);
     setFilteredNames([]);
     const seatInfo = name.includes(' - ') ? name.split(' - ')[1] : 'Seat information not available';
-    alert(`Welcome ${name.split(' - ')[0]}! Your seat: ${seatInfo}`);
+
   };
 
   return (
@@ -194,8 +220,7 @@ function Home() {
                         onClick={() => handleNameSelect(name)}
                         sx={{
                           '&:hover': {
-                            backgroundColor: 'var(--primary-green)',
-                            color: 'white'
+                            color: 'black'
                           }
                         }}
                       >
@@ -231,8 +256,8 @@ function Home() {
 function ProtectedRoute({ children }) {
   const location = useLocation();
   const urlParams = new URLSearchParams(location.search);
-  const enteredCode = urlParams.get('code');
-  const validCode = process.env.REACT_APP_ACCESS_CODE || 'wedding2024';
+  const enteredCode = urlParams.get('code')?.toLowerCase();
+  const validCode = (process.env.REACT_APP_ACCESS_CODE || 'wedding2024').toLowerCase();
   
   if (!enteredCode || enteredCode !== validCode) {
     return <Navigate to="/enter-code" replace />;
@@ -245,20 +270,22 @@ function App() {
   const basename = process.env.NODE_ENV === 'production' ? '/findyourseat' : '';
   
   return (
-    <Router basename={basename}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/demo" element={<Home />} />
-        <Route path="/demo/floor" element={<Floor />} />
-        <Route path="/demo/menu" element={<Menu />} />
-        <Route path="/demo/photos" element={<Photos />} />
-        <Route path="/enter-code" element={<EnterCode />} />
-        <Route path="/floor" element={<ProtectedRoute><Floor /></ProtectedRoute>} />
-        <Route path="/menu" element={<ProtectedRoute><Menu /></ProtectedRoute>} />
-        <Route path="/photos" element={<ProtectedRoute><Photos /></ProtectedRoute>} />
-      </Routes>
-      <BottomNav />
-    </Router>
+    <ErrorBoundary>
+      <Router basename={basename}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/demo" element={<Home />} />
+          <Route path="/demo/floor" element={<Floor />} />
+          <Route path="/demo/menu" element={<Menu />} />
+          <Route path="/demo/photos" element={<Photos />} />
+          <Route path="/enter-code" element={<EnterCode />} />
+          <Route path="/floor" element={<ProtectedRoute><Floor /></ProtectedRoute>} />
+          <Route path="/menu" element={<ProtectedRoute><Menu /></ProtectedRoute>} />
+          <Route path="/photos" element={<ProtectedRoute><Photos /></ProtectedRoute>} />
+        </Routes>
+        <BottomNav />
+      </Router>
+    </ErrorBoundary>
   );
 }
 
