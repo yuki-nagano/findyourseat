@@ -136,9 +136,10 @@ function Home() {
     setSearchName(value);
     
     if (value.length > 0) {
-      const filtered = allNames.filter(name => 
-        name.toLowerCase().includes(value.toLowerCase())
-      );
+      const filtered = allNames.filter(name => {
+        const namePart = name.includes(' - ') ? name.split(' - ')[0] : name;
+        return namePart.toLowerCase().includes(value.toLowerCase());
+      });
       setFilteredNames(filtered.slice(0, 5)); // up to 5
     } else {
       setFilteredNames([]);
