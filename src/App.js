@@ -148,8 +148,6 @@ function Home() {
   const handleNameSelect = (name) => {
     setSearchName(name);
     setFilteredNames([]);
-    const seatInfo = name.includes(' - ') ? name.split(' - ')[1] : 'Seat information not available';
-
   };
 
   return (
