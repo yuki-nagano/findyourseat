@@ -7,10 +7,12 @@ function Photos() {
   const location = useLocation();
   const isDemo = location.pathname.includes('demo');
   
+  const WEDDING_SHARE_URL = 'https://www.weddingshare.me/weddings/yf8pqby0bv1sbvrz/nhPkzXLmj2wqgOQ1kohV40YCX9NnA8MM?openExternalBrowser=1&type=link';
+
   const handleUpload = () => {
-    const photoUrl = isDemo 
-      ? process.env.REACT_APP_GOOGLE_PHOTOS_URL_DEMO 
-      : process.env.REACT_APP_GOOGLE_PHOTOS_URL;
+    const photoUrl = isDemo
+      ? process.env.REACT_APP_GOOGLE_PHOTOS_URL_DEMO
+      : WEDDING_SHARE_URL;
     if (photoUrl) {
       window.open(photoUrl, '_blank');
     }
@@ -41,7 +43,7 @@ function Photos() {
             }
           }}
         >
-          Upload to Google Photos
+          Share Photos & Videos
         </Button>
       </Box>
     </Container>
