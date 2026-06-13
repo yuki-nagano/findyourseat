@@ -47,7 +47,7 @@ function BottomNav() {
           }
         }}
       >
-        <BottomNavigationAction label="Find Your Seat" />
+        <BottomNavigationAction label="Seating Chart" />
         <BottomNavigationAction label="Floor Plan" />
         <BottomNavigationAction label="Food/Beverage Menu" />
         <BottomNavigationAction label="Photos/Videos" />

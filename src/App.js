@@ -118,11 +118,6 @@ function Home() {
     const enteredCode = urlParams.get('code')?.toLowerCase();
     const validCode = (process.env.REACT_APP_ACCESS_CODE || 'wedding2024').toLowerCase();
     
-    console.log('Location search:', location.search);
-    console.log('Entered code:', enteredCode);
-    console.log('Valid code:', validCode);
-    console.log('Match:', enteredCode === validCode);
-    
     if (!enteredCode || enteredCode !== validCode) {
       console.log('Redirecting to enter-code');
       return <Navigate to="/enter-code" replace />;
