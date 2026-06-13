@@ -51,9 +51,9 @@ function Photos() {
             Photos & Videos
           </Typography>
 
-          <Box sx={{ display: 'flex', gap: 1.2, color: '#e91e8c' }}>
+          <Box sx={{ display: 'flex', gap: 1.2, color: '#f48fb1' }}>
             <FontAwesomeIcon icon={faHeart} />
-            <FontAwesomeIcon icon={faHeart} style={{ opacity: 0.4 }} />
+            <FontAwesomeIcon icon={faHeart} style={{ opacity: 0.5 }} />
             <FontAwesomeIcon icon={faHeart} />
           </Box>
 
@@ -80,9 +80,9 @@ function Photos() {
               mt: 0.5,
               backgroundColor: 'var(--primary-green)',
               fontFamily: 'Poppins',
-              fontSize: '1rem',
-              px: 4,
-              py: 1.5,
+              fontSize: '0.875rem',
+              px: 3,
+              py: 1,
               borderRadius: 3,
               textTransform: 'none',
               boxShadow: '0 4px 12px rgba(76, 175, 80, 0.35)',

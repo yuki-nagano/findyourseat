@@ -158,7 +158,7 @@ function Home() {
           px: { xs: 2, sm: 3 },
         }}
       >
-        <h1 className="common_style" style={{ fontSize: 'clamp(1.2rem, 5vw, 2rem)', whiteSpace: 'nowrap' }}>
+        <h1 className="common_style" style={{ fontSize: 'clamp(1.6rem, 7vw, 2.4rem)', whiteSpace: 'nowrap' }}>
           <FontAwesomeIcon icon={faChampagneGlasses} style={{ marginRight: '10px' }} />
           Find Your Seat
         </h1>
