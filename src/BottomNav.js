@@ -50,7 +50,7 @@ function BottomNav() {
         <BottomNavigationAction label="Seating Chart" />
         <BottomNavigationAction label="Floor Plan" />
         <BottomNavigationAction label="Food/Beverage Menu" />
-        <BottomNavigationAction label="Photos/Videos" />
+        <BottomNavigationAction label="Photos & Videos" />
       </BottomNavigation>
     </Box>
   );

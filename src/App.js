@@ -153,12 +153,12 @@ function Home() {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        minHeight="100vh"
         sx={{
+          minHeight: 'calc(100vh - 56px)',
           px: { xs: 2, sm: 3 },
         }}
       >
-        <h1 className="common_style">
+        <h1 className="common_style" style={{ fontSize: 'clamp(1.2rem, 5vw, 2rem)', whiteSpace: 'nowrap' }}>
           <FontAwesomeIcon icon={faChampagneGlasses} style={{ marginRight: '10px' }} />
           Find Your Seat
         </h1>
@@ -189,6 +189,9 @@ function Home() {
                     }
                   },
                   '& .MuiInput-underline:after': {
+                    borderBottomColor: 'var(--primary-green)'
+                  },
+                  '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
                     borderBottomColor: 'var(--primary-green)'
                   }
                 }}

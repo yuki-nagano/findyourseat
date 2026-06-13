@@ -27,64 +27,75 @@ function Photos() {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        minHeight="100vh"
-        sx={{ gap: 2.5, px: 3, pb: 8 }}
+        sx={{ minHeight: 'calc(100vh - 56px)', justifyContent: 'center', px: 4 }}
       >
-        <Box sx={{ color: 'var(--primary-green)', fontSize: '3.5rem' }}>
-          <FontAwesomeIcon icon={faCamera} />
-        </Box>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 1.2,
+          py: 3,
+          px: 3,
+          borderRadius: 4,
+          width: '100%',
+          maxWidth: 340,
+        }}>
+          <Box sx={{ color: 'var(--primary-green)', fontSize: '2.8rem' }}>
+            <FontAwesomeIcon icon={faCamera} />
+          </Box>
 
-        <Typography
-          className="common_style"
-          sx={{ fontFamily: 'Poppins', fontSize: '1.6rem', fontWeight: 500 }}
-        >
-          Photos & Videos
-        </Typography>
+          <Typography
+            className="common_style"
+            sx={{ fontFamily: 'Poppins', fontSize: '1.4rem', fontWeight: 500 }}
+          >
+            Photos & Videos
+          </Typography>
 
-        <Box sx={{ display: 'flex', gap: 1.5, color: '#e91e8c' }}>
-          <FontAwesomeIcon icon={faHeart} />
-          <FontAwesomeIcon icon={faHeart} style={{ opacity: 0.4 }} />
-          <FontAwesomeIcon icon={faHeart} />
-        </Box>
+          <Box sx={{ display: 'flex', gap: 1.2, color: '#e91e8c' }}>
+            <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon icon={faHeart} style={{ opacity: 0.4 }} />
+            <FontAwesomeIcon icon={faHeart} />
+          </Box>
 
-        <Typography
-          className="common_style"
-          sx={{
-            fontFamily: 'Poppins',
-            color: '#666',
-            fontSize: '0.95rem',
-            lineHeight: 2,
-            maxWidth: 320,
-          }}
-        >
-          Capture and share the beautiful moments from today!
-          <br />
-          Your memories are a gift to us.
-        </Typography>
+          <Typography
+            className="common_style"
+            sx={{
+              fontFamily: 'Poppins',
+              color: '#666',
+              fontSize: '0.88rem',
+              lineHeight: 1.8,
+              maxWidth: 280,
+            }}
+          >
+            Capture and share the beautiful moments from today!
+            <br />
+            Your memories are a gift to us.
+          </Typography>
 
-        <Button
-          variant="contained"
-          onClick={handleUpload}
-          startIcon={<FontAwesomeIcon icon={faImages} />}
-          sx={{
-            mt: 1,
-            backgroundColor: 'var(--primary-green)',
-            fontFamily: 'Poppins',
-            fontSize: '1rem',
-            px: 4,
-            py: 1.5,
-            borderRadius: 3,
-            textTransform: 'none',
-            boxShadow: '0 4px 12px rgba(76, 175, 80, 0.35)',
-            '&:hover': {
+          <Button
+            variant="contained"
+            onClick={handleUpload}
+            startIcon={<FontAwesomeIcon icon={faImages} />}
+            sx={{
+              mt: 0.5,
               backgroundColor: 'var(--primary-green)',
-              opacity: 0.85,
-              boxShadow: '0 6px 16px rgba(76, 175, 80, 0.45)',
-            },
-          }}
-        >
-          Share Photos & Videos
-        </Button>
+              fontFamily: 'Poppins',
+              fontSize: '1rem',
+              px: 4,
+              py: 1.5,
+              borderRadius: 3,
+              textTransform: 'none',
+              boxShadow: '0 4px 12px rgba(76, 175, 80, 0.35)',
+              '&:hover': {
+                backgroundColor: 'var(--primary-green)',
+                opacity: 0.85,
+                boxShadow: '0 6px 16px rgba(76, 175, 80, 0.45)',
+              },
+            }}
+          >
+            Share Photos & Videos
+          </Button>
+        </Box>
       </Box>
     </Container>
   );
