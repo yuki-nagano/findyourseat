@@ -76,7 +76,7 @@ function Home() {
       const sheetId = process.env.REACT_APP_GOOGLE_SHEETS_ID;
       
       // Get B:(name)とG:(table#)
-      const range = 'PAX!B2:G40';
+      const range = 'PAX!B2:C45';
       
       const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
       const response = await fetch(url);
@@ -254,7 +254,7 @@ function ProtectedRoute({ children }) {
   const location = useLocation();
   const urlParams = new URLSearchParams(location.search);
   const enteredCode = urlParams.get('code')?.toLowerCase();
-  const validCode = (process.env.REACT_APP_ACCESS_CODE || 'wedding2024').toLowerCase();
+  const validCode = (process.env.REACT_APP_ACCESS_CODE).toLowerCase();
   
   if (!enteredCode || enteredCode !== validCode) {
     return <Navigate to="/enter-code" replace />;
