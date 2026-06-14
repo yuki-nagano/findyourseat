@@ -92,7 +92,7 @@ function Home() {
           .filter(row => row[0] && row[0].trim()) 
           .map(row => {
             const name = row[0].trim(); // B
-            const tableNumber = row[5] ? row[5].trim() : ''; // G
+            const tableNumber = row[1] ? row[1].trim() : ''; // C
             return tableNumber ? `${name} - Table ${tableNumber}` : name;
           });
         
