@@ -5,8 +5,13 @@
 .common_style {
   margin: 0;
   font-weight: 400;
-  font-family: Poppins;
+  font-family: 'Poppins', 'Kosugi Maru', sans-serif;
   line-height: 1.167;
   text-align: center;
   word-wrap: break-word;
+}
+
+/* Extend Poppins with Kosugi Maru for Japanese characters */
+body {
+  font-family: 'Poppins', 'Kosugi Maru', sans-serif;
 }
