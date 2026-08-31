@@ -26,21 +26,21 @@ function Photos() {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" disableGutters sx={{ height: 'calc(100dvh - 56px)', display: 'flex', flexDirection: 'column' }}>
       <Box
         display="flex"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        sx={{ minHeight: 'calc(100dvh - 56px)', px: 4 }}
+        sx={{ flex: 1, px: 4 }}
       >
         <Box sx={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           gap: 1.2,
-          pt: 4,
-          pb: 5,
+          pt: 2,
+          pb: 3,
           px: 5,
           borderRadius: 4,
           width: '100%',
@@ -73,7 +73,7 @@ function Photos() {
                 pb: '32px',
                 boxShadow: '4px 6px 20px rgba(0,0,0,0.16)',
                 transform: 'rotate(-2deg)',
-                maxWidth: 280,
+                maxWidth: 240,
                 width: '100%',
               }}
             >
@@ -91,7 +91,7 @@ function Photos() {
             </Box>
           )}
 
-          <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', mt: 4, mb: 1 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', mt: 3, mb: 1 }}>
             <Button
               variant="contained"
               onClick={handleUpload}
@@ -99,9 +99,9 @@ function Photos() {
               sx={{
                 backgroundColor: 'var(--primary-green)',
                 fontFamily: "'Poppins', 'Kosugi Maru', sans-serif",
-                fontSize: '0.875rem',
-                px: 4,
-                py: 1.1,
+                fontSize: '0.9rem',
+                px: 3.5,
+                py: 1,
                 borderRadius: 3,
                 textTransform: 'none',
                 boxShadow: '0 4px 12px rgba(76, 175, 80, 0.35)',
