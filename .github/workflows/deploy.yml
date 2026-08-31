@@ -48,6 +48,7 @@ jobs:
         REACT_APP_ACCESS_CODE: ${{ secrets.ACCESS_CODE }}
         REACT_APP_GOOGLE_PHOTOS_URL: ${{ secrets.GOOGLE_PHOTOS_URL }}
         REACT_APP_GOOGLE_PHOTOS_URL_DEMO: ${{ secrets.GOOGLE_PHOTOS_URL_DEMO }}
+        REACT_APP_BABY_REVEAL_DATE: ${{ vars.BABY_REVEAL_DATE }}
         
     - name: Copy .nojekyll to build directory
       run: cp public/.nojekyll build/.nojekyll
