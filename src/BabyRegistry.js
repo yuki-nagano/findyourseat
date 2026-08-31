@@ -94,7 +94,7 @@ function BabyRegistry() {
   if (isDemo || !isReady) {
     return (
       <Container maxWidth="sm">
-        <Box display="flex" justifyContent="center" alignItems="center" sx={{ minHeight: 'calc(100vh - 56px)', px: 3 }}>
+        <Box display="flex" justifyContent="center" alignItems="center" sx={{ minHeight: 'calc(100dvh - 56px)', px: 3 }}>
           {isDemo ? (
             <Typography className="common_style" sx={{ fontFamily: "'Poppins', 'Kosugi Maru', sans-serif", fontSize: '1.2rem' }}>
               Coming Soon
@@ -114,7 +114,7 @@ function BabyRegistry() {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        sx={{ minHeight: 'calc(100vh - 56px)', px: 4, gap: 3 }}
+        sx={{ minHeight: 'calc(100dvh - 56px)', px: 4, gap: 3 }}
       >
 
         <Box sx={{ textAlign: 'center' }}>

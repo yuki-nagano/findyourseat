@@ -32,7 +32,7 @@ function Photos() {
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        sx={{ minHeight: 'calc(100vh - 56px)', px: 4 }}
+        sx={{ minHeight: 'calc(100dvh - 56px)', px: 4 }}
       >
         <Box sx={{
           display: 'flex',

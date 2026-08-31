@@ -9,7 +9,7 @@ function Menu() {
   const [tab, setTab] = useState(0);
 
   return (
-    <Container maxWidth="sm" disableGutters sx={{ height: 'calc(100vh - 56px)', display: 'flex', flexDirection: 'column' }}>
+    <Container maxWidth="sm" disableGutters sx={{ height: 'calc(100dvh - 56px)', display: 'flex', flexDirection: 'column' }}>
       <Tabs
         value={tab}
         onChange={(_, v) => setTab(v)}

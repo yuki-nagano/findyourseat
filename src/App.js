@@ -230,7 +230,7 @@ function Home() {
         justifyContent="center"
         alignItems="center"
         sx={{
-          minHeight: 'calc(100vh - 56px)',
+          minHeight: 'calc(100dvh - 56px)',
           px: { xs: 2, sm: 3 },
         }}
       >
