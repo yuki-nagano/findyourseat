@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Box, Typography, Tabs, Tab } from '@mui/material';
+import { Container, Box, Tabs, Tab } from '@mui/material';
 import './common.css';
 
 const FOOD_EMBED_URL = 'https://www.canva.com/design/DAHMfs7WTss/1dbBHVwFYM4BaGRTGhHR9w/view?embed';
