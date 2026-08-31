@@ -112,7 +112,9 @@ function Photos() {
                 },
               }}
             >
-              Share Photos & Videos / 写真・動画をアップロード
+              Share Photos & Videos
+              <br />
+              写真・動画をアップロード
             </Button>
           </Box>
 

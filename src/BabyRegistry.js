@@ -132,7 +132,7 @@ function BabyRegistry() {
         >
           We're so grateful to celebrate with you! If you'd like to contribute to our registry, links below!
         <br />
-          新しい命の誕生を皆さんと一緒にお祝いできて嬉しいです。贈り物を考えてくれている方はこちらから！
+          新しい命の誕生を皆さんと一緒にお祝いできて嬉しいです。贈り物を考えて下さる方はこちらから！
         </Typography>
 
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%', maxWidth: 300 }}>
